@@ -1,18 +1,55 @@
-import QRImage from 'src/assets/image-qr-code.png';
+import { useState } from 'react';
+import FAQ from 'src/components/FAQ';
+import { questions } from 'src/constants';
+import { Question } from 'src/types';
+
+import imageMobile from 'src/assets/images/illustration-woman-online-mobile.svg';
+import imageDesktop from 'src/assets/images/illustration-woman-online-desktop.svg';
+import shadowMobile from 'src/assets/images/bg-pattern-mobile.svg';
 
 const Card = () => {
+	const [data, setData] = useState<Question[]>(questions);
+
+	const openAnswerHandler = (id: number): void => {
+		const updatedQuestions = data.map(question => {
+			if (question.id === id) {
+				return { ...question, isOpen: !question.isOpen };
+			} else {
+				return { ...question, isOpen: false };
+			}
+		});
+		setData(updatedQuestions);
+	};
+
 	return (
-		<div className='bg-white p-4 text-center max-w-[315px] rounded-2xl shadow-main'>
-			<img
-				src={QRImage}
-				alt='QRCode'
-				width={280}
-				height={280}
-				className='m-auto'
-			/>
-			<h1 className='text-xl text-title mt-2 mb-5  max-w-[250px] m-auto'>Improve your fron-end skills by building projects</h1>
-			<p className='text-base text-font mb-7 max-w-[250px] m-auto'>Scan the QR code to visit Frontend Mentor and take your coding skills to the next level</p>
+		<div className='bg-white pt-32 px-6 pb-7 rounded-3xl shadow-main relative'>
+			<div>
+				<img
+					srcSet={`${imageMobile} 320w, ${imageDesktop} 768w`}
+					src={imageMobile}
+					alt='illustration'
+					className='absolute left-1/2 -translate-x-1/2 -top-[105px]'
+					width={237}
+					height={180}
+				/>
+				<img
+					src={shadowMobile}
+					alt='shadow'
+					className='absolute left-1/2 -translate-x-1/2 top-0'
+				/>
+			</div>
+			<h2 className='text-xl color-bold mb-10 text-center'>FAQ</h2>
+			<ul>
+				{data.map(question => (
+					<FAQ
+						{...question}
+						key={question.id}
+						openHandler={openAnswerHandler}
+					/>
+				))}
+			</ul>
 		</div>
 	);
 };
+
 export default Card;

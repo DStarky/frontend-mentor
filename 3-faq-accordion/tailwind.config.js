@@ -11,6 +11,7 @@ export default {
         'bold': 'hsl(238, 29%, 16%)',
         'font': 'hsl(237, 12%, 33%)',
         'gray': 'hsl(240, 6%, 50%)',
+        'divider': 'hsl(240, 5%, 91%)',
       },
       fontSize: {
         xl: ['32px', { fontWeight: 700 }],
@@ -23,7 +24,7 @@ export default {
       },
       backgroundImage: {
         'background': 'linear-gradient(hsl(273, 75%, 66%) 0%, hsl(240, 73%, 65%) 100%)',
-        'divider': 'hsl(240, 5%, 91%)',
+
       }
     },
 
