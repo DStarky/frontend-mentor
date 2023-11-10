@@ -12,6 +12,7 @@ export default {
         'font': 'hsl(237, 12%, 33%)',
         'gray': 'hsl(240, 6%, 50%)',
         'divider': 'hsl(240, 5%, 91%)',
+        'accent': 'hsl(14, 88%, 65%)',
       },
       fontSize: {
         xl: ['32px', { fontWeight: 700 }],

@@ -2,14 +2,14 @@ import { Question } from 'src/types';
 import arrowIcon from 'src/assets/images/icon-arrow-down.svg';
 
 interface FAQProps extends Question {
-  openHandler: (id: number) => void;
+	openHandler: (id: number) => void;
 }
 
 const FAQ = ({ isOpen, question, answer, id, openHandler }: FAQProps) => {
 	return (
 		<li className='max-w-[350px]'>
 			<button
-				className={`relative pr-6 w-full text-left ${isOpen ? 'text-lg' : 'text-base'}`}
+				className={`relative pr-6 w-full text-left ${isOpen ? 'text-lg' : 'text-base'} hover:text-accent transition-colors`}
 				onClick={() => openHandler(id)}>
 				{question}
 				<img
