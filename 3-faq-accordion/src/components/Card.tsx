@@ -7,6 +7,7 @@ import imageMobile from 'src/assets/images/illustration-woman-online-mobile.svg'
 import imageDesktop from 'src/assets/images/illustration-woman-online-desktop.svg';
 import shadowMobile from 'src/assets/images/bg-pattern-mobile.svg';
 import patternDesktop from 'src/assets/images/bg-pattern-desktop.svg';
+import box from 'src/assets/images/illustration-box-desktop.svg';
 
 const Card = () => {
 	const [data, setData] = useState<Question[]>(questions);
@@ -49,6 +50,11 @@ const Card = () => {
 					src={patternDesktop}
 					alt='illustration'
 					className='absolute -left-6 top-0'
+				/>
+				<img
+					src={box}
+					alt='illustration'
+					className='fixed z-20 translate-y-[130px] -translate-x-[185px]'
 				/>
 			</div>
 			<div className='lg:ml-auto'>
