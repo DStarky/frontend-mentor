@@ -25,11 +25,13 @@ export default {
       },
       backgroundImage: {
         'background': 'linear-gradient(hsl(273, 75%, 66%) 0%, hsl(240, 73%, 65%) 100%)',
-
       }
     },
 
 
   },
   plugins: [],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 }
