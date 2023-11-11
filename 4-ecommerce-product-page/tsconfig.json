@@ -4,6 +4,12 @@
     "paths": {
       "src/*": [
         "src/*"
+      ],
+      "images/": [
+        "src/assets/images/*"
+      ],
+      "components/": [
+        "src/components/*"
       ]
     },
     "target": "ES2020",

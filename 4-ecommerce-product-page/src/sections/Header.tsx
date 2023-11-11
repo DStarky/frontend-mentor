@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Burger from 'src/assets/images/icon-menu.svg?react';
-import Close from 'src/assets/images/icon-close.svg?react';
-import ShoppingCart from 'src/assets/images/icon-cart.svg?react';
-import logo from 'src/assets/images/logo.svg';
-import avatar from 'src/assets/images/image-avatar.png';
+import Burger from 'images/icon-menu.svg?react';
+import Close from 'images/icon-close.svg?react';
+import ShoppingCart from 'images/icon-cart.svg?react';
+import logo from 'images/logo.svg';
+import avatar from 'images/image-avatar.png';
 
 interface HeaderProps {
 	setIsBackdropShow: React.Dispatch<React.SetStateAction<boolean>>;
