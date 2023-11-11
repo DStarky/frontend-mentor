@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: 'Kumbh Sans', system-ui, sans-serif;
+	}
+}
+
+@layer components {
+	.main-text {
+		@apply text-base text-font;
+	}
+
+	.title {
+		@apply text-lg text-dark;
+	}
+
+	.subtitle {
+		@apply text-subtitle text-orange uppercase;
+	}
+
+	.price {
+		@apply text-price text-dark;
+	}
+
+	.price-old {
+		@apply text-price-old text-hover line-through;
+	}
+
+	.item {
+		@apply text-item text-font hover:text-dark transition-colors max-sm:text-item-menu max-sm:text-dark  max-sm:mb-5 sm:max-md:text-[13px]; 
+	}
+
+	.icon-hover {
+		@apply fill-[#69707D] hover:fill-black  transition-colors;
+	}
+}
