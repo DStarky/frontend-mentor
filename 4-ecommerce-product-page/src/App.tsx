@@ -7,7 +7,7 @@ const App = () => {
 
 	return (
 		<main className='relative'>
-			<div className={`${isBackdropShow ? 'fixed' : 'hidden'} h-screen w-screen bg-backdrop animate-fade-in animate-fade-out top-0 left-0`}></div>
+			<div className={`${isBackdropShow ? 'fixed' : 'hidden'} h-screen w-screen bg-backdrop animate-fade-in animate-fade-out top-0 left-0 z-20`}></div>
 			<div className='container'>
 				<Header setIsBackdropShow={setIsBackdropShow} />
 			</div>

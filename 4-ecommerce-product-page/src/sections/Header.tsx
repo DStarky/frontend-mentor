@@ -22,7 +22,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 			<div className='pt-5 pb-7 sm:pt-11 sm:pb-12 flex items-center'>
 				<button
 					onClick={openMenuHandler}
-					className='sm:hidden mr-4 z-10 relative'>
+					className='sm:hidden mr-4 z-40 relative'>
 					{isOpen ? <Close className='icon-hover animate-fade-in fixed top-6 left-6' /> : <Burger className='icon-hover animate-fade-in' />}
 				</button>
 				<a
@@ -35,7 +35,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 				<ul
 					className={` ${
 						isOpen ? 'max-sm:translate-x-0' : 'max-sm:translate-x-[-101%]'
-					} max-sm:fixed max-sm:w-[66%] max-sm:bg-white max-sm:pt-[90px] max-sm:top-0 max-sm:left-0 pl-6 max-sm:h-screen sm:flex sm:gap-4 lg:gap-8 sm:flex-1 transition-transform`}>
+					} max-sm:fixed max-sm:w-[66%] max-sm:bg-white max-sm:pt-[90px] max-sm:top-0 max-sm:left-0 pl-6 max-sm:h-screen sm:flex sm:gap-4 lg:gap-8 sm:flex-1 transition-transform z-30`}>
 					<li className='item'>
 						<a href='#'>Collections</a>
 					</li>
