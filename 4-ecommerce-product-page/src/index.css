@@ -12,15 +12,15 @@
 
 @layer components {
 	.main-text {
-		@apply text-base text-font;
+		@apply text-base text-font max-sm:text-[15px];
 	}
 
 	.title {
-		@apply text-lg text-dark;
+		@apply text-lg text-dark max-sm:text-[28px];
 	}
 
 	.subtitle {
-		@apply text-subtitle text-orange uppercase;
+		@apply text-subtitle text-orange uppercase max-sm:text-[12px];
 	}
 
 	.price {

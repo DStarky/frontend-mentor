@@ -9,6 +9,8 @@ interface HeaderProps {
 	setIsBackdropShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+// [ ]: Добавить закрытие по клику вне зоны меню
+
 const Header = ({ setIsBackdropShow }: HeaderProps) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 

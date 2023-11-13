@@ -9,6 +9,7 @@ export default {
       colors: {
         'orange': 'hsl(26, 100%, 55%)',
         'orange-pale': 'hsl(25, 100%, 94%)',
+        'orange-hover': 'hsl(26, 100%, 71%)',
         'font': 'hsl(219, 9%, 45%)',
         'dark': 'hsl(220, 13%, 13%)',
         'hover': 'hsl(220, 14%, 75%)',
@@ -32,7 +33,7 @@ export default {
         'background': 'linear-gradient(hsl(273, 75%, 66%) 0%, hsl(240, 73%, 65%) 100%)',
       },
       animation: {
-        'fade-in': 'fade-in 0.3s linear' 
+        'fade-in': 'fade-in 0.3s linear'
       },
       keyframes: {
         'fade-in': {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from 'src/sections/Header';
 import Slider from './sections/Slider';
+import Content from './sections/Content';
 
 const App = () => {
 	const [isBackdropShow, setIsBackdropShow] = useState<boolean>(false);
@@ -11,7 +12,12 @@ const App = () => {
 			<div className='container'>
 				<Header setIsBackdropShow={setIsBackdropShow} />
 			</div>
-			<Slider/>
+			<section>
+				<Slider />
+				<div className='container'>
+					<Content />
+				</div>
+			</section>
 		</main>
 	);
 };
