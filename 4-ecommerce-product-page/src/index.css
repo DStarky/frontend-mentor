@@ -38,4 +38,8 @@
 	.icon-hover {
 		@apply fill-[#69707D] hover:fill-black  transition-colors;
 	}
+
+	.container{
+		@apply max-w-[1200px] m-auto px-[45px] max-sm:px-6;
+	}
 }
