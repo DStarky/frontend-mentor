@@ -1,21 +1,23 @@
-import { useSwiper } from 'swiper/react';
-
 import Next from 'images/icon-next.svg?react';
 import Prev from 'images/icon-previous.svg?react';
 
 interface SliderNavButtonProps {
 	direction: 'next' | 'prev';
+	changeSlide: React.Dispatch<React.SetStateAction<number>>;
+	imageIndex: number;
+	maxSlidesIndex: number;
 }
 
-const SliderNavButton = ({ direction }: SliderNavButtonProps) => {
-	const swiper = useSwiper();
-
+const SliderNavButton = ({ direction, changeSlide, imageIndex, maxSlidesIndex }: SliderNavButtonProps) => {
 	const sliderNavButtonHandler = () => {
-		console.log('yes')
 		if (direction === 'next') {
-			swiper.slideNext();
+			changeSlide(prev => {
+				return prev === maxSlidesIndex ? 0 : prev + 1;
+			});
 		} else {
-			swiper.slidePrev();
+			changeSlide(prev => {
+				return prev === 0 ? maxSlidesIndex : prev - 1;
+			});
 		}
 	};
 
