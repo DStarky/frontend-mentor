@@ -1,23 +1,32 @@
 import { useState } from 'react';
+import { useAppContext } from 'src/contexts/AppContext';
 import Burger from 'images/icon-menu.svg?react';
 import Close from 'images/icon-close.svg?react';
 import ShoppingCart from 'images/icon-cart.svg?react';
 import logo from 'images/logo.svg';
 import avatar from 'images/image-avatar.png';
+import Cart from 'src/components/Cart';
 
 interface HeaderProps {
 	setIsBackdropShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+// [ ]: Сделать корзину
 // [ ]: Добавить закрытие по клику вне зоны меню
+// [ ]: Добавить закрытие по клику вне зоны корзины
 
 const Header = ({ setIsBackdropShow }: HeaderProps) => {
-	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+	const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+
+	const { productCount, setProductCount } = useAppContext();
 
 	const openMenuHandler = () => {
-		setIsOpen(prev => !prev);
+		setIsMenuOpen(prev => !prev);
 		setIsBackdropShow(prev => !prev);
 	};
+
+	const cartButtonHandler = () => {};
 
 	return (
 		<section>
@@ -25,7 +34,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 				<button
 					onClick={openMenuHandler}
 					className='sm:hidden mr-4 z-40 relative'>
-					{isOpen ? <Close className='icon-hover animate-fade-in fixed top-6 left-6' /> : <Burger className='icon-hover animate-fade-in' />}
+					{isMenuOpen ? <Close className='icon-hover animate-fade-in fixed top-6 left-6' /> : <Burger className='icon-hover animate-fade-in' />}
 				</button>
 				<a
 					href='#'
@@ -36,7 +45,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 				</a>
 				<ul
 					className={` ${
-						isOpen ? 'max-sm:translate-x-0' : 'max-sm:translate-x-[-101%]'
+						isMenuOpen ? 'max-sm:translate-x-0' : 'max-sm:translate-x-[-101%]'
 					} max-sm:fixed max-sm:w-[66%] max-sm:bg-white max-sm:pt-[90px] max-sm:top-0 max-sm:left-0 pl-6 max-sm:h-screen sm:flex sm:gap-4 lg:gap-8 sm:flex-1 transition-transform z-30`}>
 					<li className='item'>
 						<a href='#'>Collections</a>
@@ -54,8 +63,11 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 						<a href='#'>Contact</a>
 					</li>
 				</ul>
-				<button className='mr-6 lg:mr-[46px]'>
+				<button
+					className='mr-6 lg:mr-[46px] relative'
+					onClick={cartButtonHandler}>
 					<ShoppingCart className='icon-hover' />
+					{productCount > 0 && <span className='absolute -right-2 -top-2 text-[10px] px-2 bg-orange text-white rounded-full font-bold'>{productCount}</span>}
 				</button>
 				<img
 					src={avatar}
@@ -64,6 +76,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 				/>
 			</div>
 			<div className='w-full h-[1px] bg-[#d7dce5] max-sm:hidden'></div>
+			<Cart title='cart' />
 		</section>
 	);
 };
