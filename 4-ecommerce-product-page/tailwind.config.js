@@ -27,7 +27,7 @@ export default {
         'item-menu': ['26px', { fontWeight: 700, lineHeight: '144%' }]
       },
       boxShadow: {
-        'main': '0px 50px 50px -20px rgba(53, 18, 122, 0.50)',
+        'main': '0px 20px 50px -20px rgba(28, 29, 30, 0.50);',
       },
       backgroundImage: {
         'background': 'linear-gradient(hsl(273, 75%, 66%) 0%, hsl(240, 73%, 65%) 100%)',

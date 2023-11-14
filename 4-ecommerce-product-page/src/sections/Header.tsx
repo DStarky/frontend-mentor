@@ -26,10 +26,12 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 		setIsBackdropShow(prev => !prev);
 	};
 
-	const cartButtonHandler = () => {};
+	const cartButtonHandler = () => {
+		setIsCartOpen(prev => !prev);
+	};
 
 	return (
-		<section>
+		<section className='relative'>
 			<div className='pt-5 pb-7 sm:pt-11 sm:pb-12 flex items-center'>
 				<button
 					onClick={openMenuHandler}
@@ -76,7 +78,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 				/>
 			</div>
 			<div className='w-full h-[1px] bg-[#d7dce5] max-sm:hidden'></div>
-			<Cart title='cart' />
+			{isCartOpen && <Cart title='Cart' />}
 		</section>
 	);
 };
