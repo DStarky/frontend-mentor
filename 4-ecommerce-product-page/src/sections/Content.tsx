@@ -12,8 +12,12 @@ const Content = ({ name, description, currency, price, oldPrice, id }: IContentP
 
 	useEffect(() => {
 		const currentProduct = cart.find(product => product.id === id);
-		if (currentProduct) setCount(currentProduct.count);
-	}, []);
+		if (currentProduct) {
+			setCount(currentProduct.count);
+		} else {
+			setCount(0);
+		};
+	}, [cart]);
 
 	useEffect(() => {
 		if (count > 0) {

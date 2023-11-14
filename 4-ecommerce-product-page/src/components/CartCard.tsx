@@ -5,10 +5,12 @@ import Trash from 'images/icon-delete.svg?react';
 interface ICartCardProps extends Good {}
 
 const CartCard = ({ id, count }: ICartCardProps) => {
-	const { products } = useAppContext();
+	const { products, cart, updateCart } = useAppContext();
 	const currentProduct = products.find(product => product.id === id);
 
-	const deleteHandler = () => {};
+	const deleteHandler = () => {
+		updateCart(cart.filter(product => product.id !== id));
+	};
 
 	if (currentProduct) {
 		return (
