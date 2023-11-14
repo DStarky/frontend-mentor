@@ -1,8 +1,11 @@
 import { createContext, useContext, useState } from 'react';
+import { products } from 'src/constants';
+import { Product } from 'src/types';
 
 interface IAppContextGenerator {
 	productCount: number;
 	setProductCount: (count: number) => void;
+	products: Product[];
 }
 
 const AppContext = createContext<IAppContextGenerator | undefined>(undefined);
@@ -26,5 +29,5 @@ interface IAppContextProps {
 export const AppContextProvider: React.FC<IAppContextProps> = ({ children }) => {
 	const [productCount, setProductCount] = useState<number>(0);
 
-	return <AppContext.Provider value={{ productCount, setProductCount }}>{children}</AppContext.Provider>;
+	return <AppContext.Provider value={{ productCount, setProductCount, products }}>{children}</AppContext.Provider>;
 };
