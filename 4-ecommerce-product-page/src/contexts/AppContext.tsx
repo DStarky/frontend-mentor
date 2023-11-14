@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from 'react';
 import { products } from 'src/constants';
-import { Product } from 'src/types';
+import { Good, Product } from 'src/types';
 
 interface IAppContextGenerator {
-	productCount: number;
-	setProductCount: (count: number) => void;
+	cart: Good[];
 	products: Product[];
+	updateCart: (cartData: Good[]) => void;
 }
 
 const AppContext = createContext<IAppContextGenerator | undefined>(undefined);
@@ -27,7 +27,7 @@ interface IAppContextProps {
 
 // Создаем функциональный компонент, который возвращает Context.Provider с заданными значениями и пропсами
 export const AppContextProvider: React.FC<IAppContextProps> = ({ children }) => {
-	const [productCount, setProductCount] = useState<number>(0);
+	const [cart, updateCart] = useState<Good[]>([]);
 
-	return <AppContext.Provider value={{ productCount, setProductCount, products }}>{children}</AppContext.Provider>;
+	return <AppContext.Provider value={{ cart, updateCart, products }}>{children}</AppContext.Provider>;
 };

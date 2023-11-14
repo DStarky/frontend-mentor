@@ -1,10 +1,36 @@
+import { useEffect, useState } from 'react';
 import AddToCart from 'src/components/AddToCart';
 import Counter from 'src/components/Counter';
+import { useAppContext } from 'src/contexts/AppContext';
 import { Product } from 'src/types';
 
-type IContentProps = Omit<Product, 'images'>
+type IContentProps = Omit<Product, 'images'>;
 
-const Content = ({ name, description, currency, price, oldPrice}: IContentProps) => {
+const Content = ({ name, description, currency, price, oldPrice, id }: IContentProps) => {
+	const { cart, updateCart } = useAppContext();
+	const [count, setCount] = useState<number>(0);
+
+	useEffect(() => {
+		const currentProduct = cart.find(product => product.id === id);
+		if (currentProduct) setCount(currentProduct.count);
+	}, []);
+
+	useEffect(() => {
+		if (count > 0) {
+			const currentProduct = cart.find(product => product.id === id);
+
+			if (currentProduct) {
+				currentProduct.count = count;
+				updateCart([...cart]);
+			} else {
+				const newProduct = { id: id, count: count };
+				updateCart([...cart, newProduct]);
+			}
+		} else {
+			updateCart(cart.filter(product => product.id !== id));
+		}
+	}, [count]);
+
 	return (
 		<section className='pt-6'>
 			<h3 className='subtitle mb-5'>Sneaker Company</h3>
@@ -24,8 +50,14 @@ const Content = ({ name, description, currency, price, oldPrice}: IContentProps)
 				</p>
 			</div>
 			<div>
-				<Counter />
-				<AddToCart />
+				<Counter
+					count={count}
+					setCount={setCount}
+				/>
+				<AddToCart
+					count={count}
+					setCount={setCount}
+				/>
 			</div>
 		</section>
 	);

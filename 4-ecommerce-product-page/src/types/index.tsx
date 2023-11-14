@@ -14,3 +14,8 @@ export type Product = {
 	id: number;
 	images: ImageType[];
 };
+
+export type Good = {
+	id: number;
+	count: number;
+};
