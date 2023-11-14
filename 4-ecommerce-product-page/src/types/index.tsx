@@ -12,4 +12,5 @@ export type Product = {
 	oldPrice: number;
 	description: string;
 	id: number;
+	images: ImageType[];
 };
