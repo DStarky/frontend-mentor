@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppContext } from 'src/contexts/AppContext';
 import Burger from 'images/icon-menu.svg?react';
 import Close from 'images/icon-close.svg?react';
@@ -19,14 +19,27 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
 
-	const buttonRef = useRef<HTMLButtonElement | null>(null)
+	const buttonRef = useRef<HTMLButtonElement | null>(null);
+	const menuRef = useRef<HTMLUListElement | null>(null);
 
 	const { cart } = useAppContext();
-
 
 	const totalCount = cart.reduce((total, product) => {
 		return total + product.count;
 	}, 0);
+
+	useEffect(() => {
+		const clickOutsideHandler = () => {
+			setIsMenuOpen(false);
+			setIsBackdropShow(false);
+		};
+
+		document.addEventListener('mousedown', clickOutsideHandler);
+
+		return () => {
+			document.removeEventListener('mousedown', clickOutsideHandler);
+		};
+	}, [setIsMenuOpen]);
 
 	const openMenuHandler = () => {
 		setIsMenuOpen(prev => !prev);
@@ -36,7 +49,6 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 	const cartButtonHandler = () => {
 		setIsCartOpen(prev => !prev);
 	};
-
 
 	return (
 		<section className='relative'>
@@ -54,6 +66,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 						alt='logotype with "sneakers" word'></img>
 				</a>
 				<ul
+					ref={menuRef}
 					className={` ${
 						isMenuOpen ? 'max-sm:translate-x-0' : 'max-sm:translate-x-[-101%]'
 					} max-sm:fixed max-sm:w-[66%] max-sm:bg-white max-sm:pt-[90px] max-sm:top-0 max-sm:left-0 pl-6 max-sm:h-screen sm:flex sm:gap-4 lg:gap-8 sm:flex-1 transition-transform z-30`}>

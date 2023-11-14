@@ -18,8 +18,6 @@ const Cart = ({ title, setIsCartOpen, buttonRef }: ICartProps) => {
 				if (cartRef.current && !cartRef.current.contains(event.target as Node) && !buttonRef.current.contains(event.target as Node)) {
 					// Клик вне компонента, вызываем setIsCartOpen(false)
 					setIsCartOpen(false);
-
-					event.stopPropagation();
 				}
 			}
 		};
