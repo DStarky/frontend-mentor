@@ -11,7 +11,7 @@ interface HeaderProps {
 	setIsBackdropShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// [ ]: Сделать корзину
+// [x]: Сделать корзину
 // [ ]: Добавить закрытие по клику вне зоны меню
 // [ ]: Добавить закрытие по клику вне зоны корзины
 
@@ -19,7 +19,12 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
 
-	const { productCount, setProductCount } = useAppContext();
+	const { cart } = useAppContext();
+
+
+	const totalCount = cart.reduce((total, product) => {
+		return total + product.count;
+	}, 0);
 
 	const openMenuHandler = () => {
 		setIsMenuOpen(prev => !prev);
@@ -29,6 +34,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 	const cartButtonHandler = () => {
 		setIsCartOpen(prev => !prev);
 	};
+
 
 	return (
 		<section className='relative'>
@@ -69,7 +75,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 					className='mr-6 lg:mr-[46px] relative'
 					onClick={cartButtonHandler}>
 					<ShoppingCart className='icon-hover' />
-					{productCount > 0 && <span className='absolute -right-2 -top-2 text-[10px] px-2 bg-orange text-white rounded-full font-bold'>{productCount}</span>}
+					{totalCount > 0 && <span className='absolute -right-2 -top-2 text-[10px] px-2 bg-orange text-white rounded-full font-bold'>{totalCount}</span>}
 				</button>
 				<img
 					src={avatar}
@@ -78,7 +84,12 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 				/>
 			</div>
 			<div className='w-full h-[1px] bg-[#d7dce5] max-sm:hidden'></div>
-			{isCartOpen && <Cart title='Cart' />}
+			{isCartOpen && (
+				<Cart
+					title='Cart'
+					setIsCartOpen={setIsCartOpen}
+				/>
+			)}
 		</section>
 	);
 };

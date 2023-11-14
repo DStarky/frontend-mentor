@@ -1,15 +1,37 @@
 import { useAppContext } from 'src/contexts/AppContext';
 import CartCard from './CartCard';
+import { useEffect, useRef } from 'react';
 
 interface ICartProps {
 	title: string;
+	setIsCartOpen: (n: boolean) => void;
 }
 
-const Cart = ({ title }: ICartProps) => {
-	const { cart, updateCart } = useAppContext();
+const Cart = ({ title, setIsCartOpen }: ICartProps) => {
+	const { cart } = useAppContext();
+	const cartRef = useRef<HTMLDivElement | null>(null);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+				// Клик вне компонента, вызываем setIsCartOpen(false)
+				setIsCartOpen(false);
+			}
+		};
+
+		// Добавляем обработчик события при монтировании компонента
+		document.addEventListener('mousedown', handleClickOutside);
+
+		// Очищаем обработчик при размонтировании компонента
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [setIsCartOpen]);
 
 	return (
-		<div className='p-6 rounded-[10px] absolute z-20 bg-white min-h-[250px] mt-2 w-[108%] left-[-4%] shadow-main animate-fade-in'>
+		<div
+			ref={cartRef}
+			className='p-6 rounded-[10px] absolute z-20 bg-white min-h-[250px] mt-2 w-[108%] left-[-4%] shadow-main animate-fade-in'>
 			<h4 className='text-[16px] font-bold mb-[52px]'>{title}</h4>
 			<div className='h-[1px] w-full bg-[#E4E9F2] absolute left-0 top-[72px]'></div>
 			{cart.length < 1 && <p className='text-[16px] font-bold leading-6 text-font absolute left-1/2 -translate-x-1/2 bottom-[80px]'>Yout cart is epmty.</p>}
@@ -19,7 +41,10 @@ const Cart = ({ title }: ICartProps) => {
 						{cart.map(product => {
 							return (
 								<li key={product.id}>
-									<CartCard id={product.id} count={product.count}/>
+									<CartCard
+										id={product.id}
+										count={product.count}
+									/>
 								</li>
 							);
 						})}
