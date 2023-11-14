@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Minus from 'images/icon-minus.svg?react';
 import Plus from 'images/icon-plus.svg?react';
 

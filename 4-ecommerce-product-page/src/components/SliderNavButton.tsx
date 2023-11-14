@@ -8,7 +8,7 @@ interface SliderNavButtonProps {
 	maxSlidesIndex: number;
 }
 
-const SliderNavButton = ({ direction, changeSlide, imageIndex, maxSlidesIndex }: SliderNavButtonProps) => {
+const SliderNavButton = ({ direction, changeSlide, maxSlidesIndex }: SliderNavButtonProps) => {
 	const sliderNavButtonHandler = () => {
 		if (direction === 'next') {
 			changeSlide(prev => {
