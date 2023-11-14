@@ -6,7 +6,7 @@ const AddToCart = () => {
 
 	return (
 		<button
-			className='py-4 bg-orange w-full rounded-[10px] flex justify-center items-center gap-4 hover:bg-orange-hover transition-colors'
+			className='button'
 			onClick={() => setProductCount(productCount + 1)}>
 			<Cart className='fill-white' />
 			<span className='text-white font-bold'>Add to cart</span>

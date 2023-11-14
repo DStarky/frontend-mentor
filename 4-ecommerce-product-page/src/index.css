@@ -32,14 +32,18 @@
 	}
 
 	.item {
-		@apply text-item text-font hover:text-dark transition-colors max-sm:text-item-menu max-sm:text-dark  max-sm:mb-5 sm:max-md:text-[13px]; 
+		@apply text-item text-font hover:text-dark transition-colors max-sm:text-item-menu max-sm:text-dark  max-sm:mb-5 sm:max-md:text-[13px];
 	}
 
 	.icon-hover {
 		@apply fill-[#69707D] hover:fill-black  transition-colors;
 	}
 
-	.container{
+	.container {
 		@apply max-w-[1200px] m-auto px-[45px] max-sm:px-6;
+	}
+
+	.button {
+		@apply py-4 bg-orange w-full rounded-[10px] flex justify-center items-center gap-4 hover:bg-orange-hover transition-colors;
 	}
 }

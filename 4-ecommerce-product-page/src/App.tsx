@@ -2,9 +2,13 @@ import { useState } from 'react';
 import Header from 'src/sections/Header';
 import Slider from './sections/Slider';
 import Content from './sections/Content';
+import { useAppContext } from 'src/contexts/AppContext';
 
 const App = () => {
 	const [isBackdropShow, setIsBackdropShow] = useState<boolean>(false);
+
+	const { products } = useAppContext();
+	const currentProduct = products.find(product => product.id === 1);
 
 	return (
 		<main className='relative'>
@@ -12,12 +16,14 @@ const App = () => {
 			<div className='container'>
 				<Header setIsBackdropShow={setIsBackdropShow} />
 			</div>
-			<section>
-				<Slider />
-				<div className='container'>
-					<Content />
-				</div>
-			</section>
+			{currentProduct && (
+				<section>
+					<Slider images={currentProduct.images}/>
+					<div className='container'>
+						<Content {...currentProduct} />
+					</div>
+				</section>
+			)}
 		</main>
 	);
 };
