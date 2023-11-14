@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useAppContext } from 'src/contexts/AppContext';
 import Burger from 'images/icon-menu.svg?react';
 import Close from 'images/icon-close.svg?react';
@@ -13,11 +13,13 @@ interface HeaderProps {
 
 // [x]: Сделать корзину
 // [ ]: Добавить закрытие по клику вне зоны меню
-// [ ]: Добавить закрытие по клику вне зоны корзины
+// [x]: Добавить закрытие по клику вне зоны корзины
 
 const Header = ({ setIsBackdropShow }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+
+	const buttonRef = useRef<HTMLButtonElement | null>(null)
 
 	const { cart } = useAppContext();
 
@@ -73,7 +75,8 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 				</ul>
 				<button
 					className='mr-6 lg:mr-[46px] relative'
-					onClick={cartButtonHandler}>
+					onClick={cartButtonHandler}
+					ref={buttonRef}>
 					<ShoppingCart className='icon-hover' />
 					{totalCount > 0 && <span className='absolute -right-2 -top-2 text-[10px] px-2 bg-orange text-white rounded-full font-bold'>{totalCount}</span>}
 				</button>
@@ -88,6 +91,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 				<Cart
 					title='Cart'
 					setIsCartOpen={setIsCartOpen}
+					buttonRef={buttonRef}
 				/>
 			)}
 		</section>

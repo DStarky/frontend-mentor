@@ -1,21 +1,26 @@
 import { useAppContext } from 'src/contexts/AppContext';
 import CartCard from './CartCard';
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 
 interface ICartProps {
 	title: string;
 	setIsCartOpen: (n: boolean) => void;
+	buttonRef: RefObject<HTMLElement>;
 }
 
-const Cart = ({ title, setIsCartOpen }: ICartProps) => {
+const Cart = ({ title, setIsCartOpen, buttonRef }: ICartProps) => {
 	const { cart } = useAppContext();
 	const cartRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
-			if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
-				// Клик вне компонента, вызываем setIsCartOpen(false)
-				setIsCartOpen(false);
+			if (buttonRef.current) {
+				if (cartRef.current && !cartRef.current.contains(event.target as Node) && !buttonRef.current.contains(event.target as Node)) {
+					// Клик вне компонента, вызываем setIsCartOpen(false)
+					setIsCartOpen(false);
+
+					event.stopPropagation();
+				}
 			}
 		};
 
