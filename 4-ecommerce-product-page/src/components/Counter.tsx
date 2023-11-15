@@ -13,7 +13,7 @@ const Counter = ({ count, setCount }: ICounterProps) => {
 	};
 
 	return (
-		<div className='py-4 px-6 bg-bg-count rounded-[10px] flex justify-between mb-4'>
+		<div className='py-4 px-6 bg-bg-count rounded-[10px] flex justify-between mb-4 lg:min-w-[160px]'>
 			<button
 				onClick={() => counterHandler('minus')}
 				disabled={count > 0 ? false : true}

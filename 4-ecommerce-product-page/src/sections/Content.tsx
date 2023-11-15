@@ -36,11 +36,11 @@ const Content = ({ name, description, currency, price, oldPrice, id }: IContentP
 	}, [count]);
 
 	return (
-		<section className='pt-6'>
+		<section className='pt-6 md:max-lg:w-[450px] md:max-lg:m-auto'>
 			<h3 className='subtitle mb-5'>Sneaker Company</h3>
 			<h2 className='title mb-4'>{name}</h2>
 			<p className='main-text mb-6'>{description}</p>
-			<div className='mb-6 flex justify-between items-center'>
+			<div className='mb-6 flex justify-between items-center lg:flex-col lg:items-start'>
 				<div className='flex items-center gap-4'>
 					<p className='price'>
 						{currency}
@@ -53,7 +53,7 @@ const Content = ({ name, description, currency, price, oldPrice, id }: IContentP
 					{oldPrice.toFixed(2)}
 				</p>
 			</div>
-			<div>
+			<div className='lg:flex gap-4 items-start'>
 				<Counter
 					count={count}
 					setCount={setCount}

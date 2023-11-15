@@ -9,7 +9,7 @@ export default function Slider({ images }: ISliderProps) {
 
 	return (
 		<>
-			<div className='relative h-[80vw] sm:hidden bg-red-100 overflow-hidden'>
+			<div className='relative h-[80vw] md:hidden bg-red-100 overflow-hidden'>
 				{images.map((image, index) => {
 					let typeOfSlide = 'hidden';
 					if (index === currentImageIndex) {
