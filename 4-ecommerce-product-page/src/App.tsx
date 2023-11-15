@@ -18,7 +18,7 @@ const App = () => {
 				<Header setIsBackdropShow={setIsBackdropShow} />
 			</div>
 			{currentProduct && (
-				<section className='flex max-lg:flex-col lg:container lg:gap-[125px] lg:items-center'>
+				<section className='flex max-lg:flex-col lg:container lg:gap-[50px] xl:gap-[125px] lg:items-center'>
 					<div className='max-lg:container'>
 						<Images images={currentProduct.images} />
 					</div>
