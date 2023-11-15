@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useAppContext } from 'src/contexts/AppContext';
 import Burger from 'images/icon-menu.svg?react';
 import Close from 'images/icon-close.svg?react';

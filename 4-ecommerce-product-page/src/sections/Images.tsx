@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import {  useRef, useState } from 'react';
 import { Product } from 'src/types';
 import Close from 'images/icon-close.svg?react';
 import SliderNavButton from 'src/components/SliderNavButton';
@@ -8,7 +8,7 @@ type IImagesProps = Pick<Product, 'images'> & {
 	isBackdropShow: boolean;
 };
 
-const Images = ({ images, setIsBackdropShow, isBackdropShow }: IImagesProps) => {
+const Images = ({ images, setIsBackdropShow }: IImagesProps) => {
 	const galleryRef = useRef<HTMLDivElement | null>(null);
 	const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
 	const [activeGalleryImageIndex, setGalleryActiveImageIndex] = useState<number>(0);
