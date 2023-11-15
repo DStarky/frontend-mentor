@@ -16,6 +16,7 @@ export default {
         'bg-count': 'hsl(223, 64%, 98%)',
         'white': 'hsl(0, 0%, 100%)',
         'backdrop': 'hsla(0, 0%, 0%, 0.75)',
+        'thumb': 'hsla(0, 0%, 100%, 0.25)',
       },
       fontSize: {
         lg: ['44px', { fontWeight: 700, lineHeight: '109%' }],

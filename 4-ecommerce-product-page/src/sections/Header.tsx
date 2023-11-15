@@ -11,10 +11,6 @@ interface HeaderProps {
 	setIsBackdropShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// [x]: Сделать корзину
-// [ ]: Добавить закрытие по клику вне зоны меню
-// [x]: Добавить закрытие по клику вне зоны корзины
-
 const Header = ({ setIsBackdropShow }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
@@ -28,18 +24,18 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 		return total + product.count;
 	}, 0);
 
-	useEffect(() => {
-		const clickOutsideHandler = () => {
-			setIsMenuOpen(false);
-			setIsBackdropShow(false);
-		};
+	// useEffect(() => {
+	// 	const clickOutsideHandler = () => {
+	// 		setIsMenuOpen(false);
+	// 		setIsBackdropShow(false);
+	// 	};
 
-		document.addEventListener('mousedown', clickOutsideHandler);
+	// 	document.addEventListener('mousedown', clickOutsideHandler);
 
-		return () => {
-			document.removeEventListener('mousedown', clickOutsideHandler);
-		};
-	}, [setIsMenuOpen]);
+	// 	return () => {
+	// 		document.removeEventListener('mousedown', clickOutsideHandler);
+	// 	};
+	// }, [setIsMenuOpen]);
 
 	const openMenuHandler = () => {
 		setIsMenuOpen(prev => !prev);
@@ -69,7 +65,7 @@ const Header = ({ setIsBackdropShow }: HeaderProps) => {
 					ref={menuRef}
 					className={` ${
 						isMenuOpen ? 'max-sm:translate-x-0' : 'max-sm:translate-x-[-101%]'
-					} max-sm:fixed max-sm:w-[66%] max-sm:bg-white max-sm:pt-[90px] max-sm:top-0 max-sm:left-0 pl-6 max-sm:h-screen sm:flex sm:gap-4 lg:gap-8 sm:flex-1 transition-transform z-30`}>
+					} max-sm:fixed max-sm:w-[66%] max-sm:bg-white max-sm:pt-[90px] max-sm:top-0 max-sm:left-0 pl-6 max-sm:h-screen sm:flex sm:gap-4 lg:gap-8 sm:flex-1 transition-transform max-md:z-30`}>
 					<li className='item'>
 						<a href='#'>Collections</a>
 					</li>

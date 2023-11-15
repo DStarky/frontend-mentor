@@ -35,12 +35,14 @@ export default function Slider({ images }: ISliderProps) {
 					changeSlide={setCurrentImagesIndex}
 					imageIndex={currentImageIndex}
 					maxSlidesIndex={images.length - 1}
+					env='slider'
 				/>
 				<SliderNavButton
 					direction='next'
 					changeSlide={setCurrentImagesIndex}
 					imageIndex={currentImageIndex}
 					maxSlidesIndex={images.length - 1}
+					env='slider'
 				/>
 			</div>
 		</>

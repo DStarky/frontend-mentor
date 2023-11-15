@@ -20,7 +20,11 @@ const App = () => {
 			{currentProduct && (
 				<section className='flex max-lg:flex-col lg:container lg:gap-[50px] xl:gap-[125px] lg:items-center'>
 					<div className='max-lg:container'>
-						<Images images={currentProduct.images} />
+						<Images
+							images={currentProduct.images}
+							isBackdropShow={isBackdropShow}
+							setIsBackdropShow={setIsBackdropShow}
+						/>
 					</div>
 					<Slider images={currentProduct.images} />
 					<div className='max-lg:container'>
