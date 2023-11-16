@@ -2,6 +2,7 @@ import Button from './Button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useAppContext } from 'src/contexts/AppContext';
 
 interface IForm {
 	email: string;
@@ -21,8 +22,10 @@ const Form = () => {
 		mode: 'onBlur',
 	});
 
+	const { setSuccess } = useAppContext();
+
 	const submitFn: SubmitHandler<IForm> = data => {
-		console.log(data);
+		setSuccess(true);
 	};
 
 	return (
