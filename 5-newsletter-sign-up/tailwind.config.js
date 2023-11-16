@@ -24,6 +24,19 @@ export default {
       },
       backgroundSize: {
         '200%': '200%',
+      },
+      animation: {
+        'fade-in': 'fade-in 0.3s linear'
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': {
+            opacity: 0,
+          },
+          '100%': {
+            opacity: 1,
+          }
+        }
       }
     },
 

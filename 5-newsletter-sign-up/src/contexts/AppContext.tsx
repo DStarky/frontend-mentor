@@ -3,6 +3,8 @@ import { createContext, useContext, useState } from 'react';
 interface IAppContextGenerator {
 	success: boolean;
 	setSuccess: (_: boolean) => void;
+	email: string;
+	setEmail: (_: string) => void;
 }
 
 const AppContext = createContext<IAppContextGenerator | undefined>(undefined);
@@ -25,6 +27,7 @@ interface IAppContextProps {
 // Создаем функциональный компонент, который возвращает Context.Provider с заданными значениями и пропсами
 export const AppContextProvider: React.FC<IAppContextProps> = ({ children }) => {
 	const [success, setSuccess] = useState<boolean>(false);
+	const [email, setEmail] = useState<string>('');
 
-	return <AppContext.Provider value={{ success, setSuccess }}>{children}</AppContext.Provider>;
+	return <AppContext.Provider value={{ success, setSuccess, email, setEmail }}>{children}</AppContext.Provider>;
 };

@@ -22,10 +22,11 @@ const Form = () => {
 		mode: 'onBlur',
 	});
 
-	const { setSuccess } = useAppContext();
+	const { setSuccess, setEmail } = useAppContext();
 
 	const submitFn: SubmitHandler<IForm> = data => {
 		setSuccess(true);
+		setEmail(data.email);
 	};
 
 	return (
@@ -44,7 +45,7 @@ const Form = () => {
 				type='text'
 				id='email'
 				className={`border-[1px] border-gray px-5 py-4 mb-5 text-main rounded-lg focus:outline-none focus:placeholder:text-transparent focus:border-main  placeholder:text-gray ${
-					errors.email && 'bg-[#ffe8e6] text-[red] border-[red]'
+					errors.email ? 'bg-[#ffe8e6] text-[#ff0000] border-[#ff0000]' : ''
 				}`}
 				{...register('email', {
 					required: true,
