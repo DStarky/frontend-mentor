@@ -21,13 +21,12 @@ const Chart = () => {
 			height='100%'>
 			<BarChart data={data}>
 				<Bar
+					// animationDuration={5000}
 					dataKey='amount'
 					fill='#ec775f'
-					radius={4}>
-					{data.map((_, index) => (
-						<Cell fill={index === 2 ? '#76b5bc' : '#ec775f'} />
-					))}
-				</Bar>
+					radius={4}
+					activeBar={{ fill: '#76b5bc' }}
+				/>
 				<XAxis
 					dataKey='day'
 					axisLine={false}

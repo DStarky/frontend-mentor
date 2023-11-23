@@ -4,7 +4,7 @@ import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipCont
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
 	if (active) {
     return (
-      <div className='p-4 bg-white rounded-[8px]  text-brown shadow-lg'>
+      <div className='px-3 py-2 rounded-[8px] bg-brown text-white shadow-lg'>
         <p>{payload?.[0].value}</p>
       </div>
     )
